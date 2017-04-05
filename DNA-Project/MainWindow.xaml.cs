@@ -1,28 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DNA_Project
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        Dna Dna;
+        Stopwatch Timer =  new Stopwatch();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+         void Button_Click(object sender, RoutedEventArgs e)
+         {
+            var genomSize = Int32.Parse(GenomSizeLabel.Text);
+            Dna = new Dna(genomSize);
+            GenomLabel.Text = string.Empty;
+            foreach (var x in Dna.Genom)
+            {
+                GenomLabel.Text += x.ToString();
+            }
+        }
+
+        void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var size = int.Parse(SequenceSizeLabel.Text);
+            Dna.SetSequence(size);
+            Timer.Start();
+            var result = Dna.PreciseSearch();
+            double seconds = Timer.Elapsed.TotalSeconds;
+            Timer.Reset();
+            MessageBox.Show($"Znaleziono {result}\n w czasie: {seconds} sekund", "Rezultat dokładnego przeszukiwania", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
+
 }
