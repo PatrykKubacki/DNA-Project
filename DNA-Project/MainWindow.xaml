@@ -10,7 +10,9 @@
     <Grid>
         <Label Content="Aplikacja wyszukująca identyczne sekwencje w DNA" HorizontalAlignment="Center" Margin="50,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Button Content="Losuj Genom"  HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="91" Height="57" Click="Button_Click"/>
-        <TextBlock x:Name="GenomLabel" Text="" TextWrapping="Wrap" Background="DarkGray" HorizontalAlignment="Left" Margin="106,92,0,0" VerticalAlignment="Top" Width="882" Height="396"/>
+        <ScrollViewer Margin="124,91,10,250" MinWidth="882" MinHeight="396" >
+            <TextBlock x:Name="GenomLabel" Text="" TextWrapping="Wrap" Background="DarkGray" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+        </ScrollViewer>
         <Label Content="Podaj wielkość genomu, (domyślnie 100):" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="12"/>
         <TextBox x:Name="GenomSizeLabel"  HorizontalAlignment="Left" Height="23" Margin="242,64,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120"/>
         <Rectangle Fill="#000000" HorizontalAlignment="Left" Height="7" Margin="10,493,0,0" Stroke="Black" VerticalAlignment="Top" Width="978"/>
