@@ -82,71 +82,84 @@ namespace DNA_Project
 
         public int OptimalSearch()
         {
-            var result = 0;
             var size = Sequence.Length;
-            if (size == 2)
+            switch (size)
             {
-                var firstTab = GetProperTable(Sequence[0]);
-                var secondTab = GetProperTable(Sequence[1]);
-                foreach (var firstElement in firstTab)
+                case 2: return OptimalSearchSize2();
+                case 3: return OptimalSearchSize3();
+                case 4: return OptimalSearchSize4();
+                default:return 0;
+            }
+        }
+
+        int OptimalSearchSize2()
+        {
+            int result = 0;
+            var firstTab = GetProperTable(Sequence[0]);
+            var secondTab = GetProperTable(Sequence[1]);
+            foreach (var firstElement in firstTab)
+            {
+                foreach (var secondElement in secondTab)
                 {
-                    foreach (var secondElement in secondTab)
+                    if ((firstElement + 1) == secondElement)
                     {
-                        if ((firstElement+1) == secondElement)
-                        {
-                            result++;
-                            break;
-                        }
+                        result++;
+                        break;
                     }
                 }
             }
-            else if (size == 3)
+            return result;
+        }
+
+        int OptimalSearchSize3()
+        {
+            int result = 0;
+            var firstTab = GetProperTable(Sequence[0]);
+            var secondTab = GetProperTable(Sequence[1]);
+            var thirdTab = GetProperTable(Sequence[2]);
+            foreach (var firstElement in firstTab)
             {
-                var firstTab = GetProperTable(Sequence[0]);
-                var secondTab = GetProperTable(Sequence[1]);
-                var thirdTab = GetProperTable(Sequence[2]);
-                foreach (var firstElement in firstTab)
+                foreach (var secondElement in secondTab)
                 {
-                    foreach (var secondElement in secondTab)
+                    if ((firstElement + 1) == secondElement)
                     {
-                        if ((firstElement + 1) == secondElement)
+                        foreach (var thirdElement in thirdTab)
                         {
-                            foreach (var thirdElement in thirdTab)
+                            if ((secondElement + 1) == thirdElement)
                             {
-                                if ((secondElement + 1) == thirdElement)
-                                {
-                                    result++;
-                                    break;
-                                }
+                                result++;
+                                break;
                             }
                         }
                     }
                 }
-
             }
-            else
+            return result;
+        }
+
+        int OptimalSearchSize4()
+        {
+            int result = 0;
+            var firstTab = GetProperTable(Sequence[0]);
+            var secondTab = GetProperTable(Sequence[1]);
+            var thirdTab = GetProperTable(Sequence[2]);
+            var fourthTab = GetProperTable(Sequence[3]);
+            foreach (var firstElement in firstTab)
             {
-                var firstTab = GetProperTable(Sequence[0]);
-                var secondTab = GetProperTable(Sequence[1]);
-                var thirdTab = GetProperTable(Sequence[2]);
-                var fourthTab = GetProperTable(Sequence[3]);
-                foreach (var firstElement in firstTab)
+                foreach (var secondElement in secondTab)
                 {
-                    foreach (var secondElement in secondTab)
+                    if ((firstElement + 1) == secondElement)
                     {
-                        if ((firstElement + 1) == secondElement)
+                        foreach (var thirdElement in thirdTab)
                         {
-                            foreach (var thirdElement in thirdTab)
+                            if ((secondElement + 1) == thirdElement)
                             {
-                                if ((secondElement + 1) == thirdElement)
+                                foreach (var fourthElement in fourthTab)
                                 {
-                                    foreach (var fourthElement in fourthTab)
+                                    if ((thirdElement + 1) == fourthElement)
                                     {
-                                        if ((thirdElement + 1) == fourthElement)
-                                        {
-                                            result++;
-                                            break; 
-                                        }
+                                        result++;
+                                        break;
                                     }
                                 }
                             }

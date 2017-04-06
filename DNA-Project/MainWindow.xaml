@@ -27,6 +27,6 @@
         <RadioButton GroupName="sizeGroup" Content="2" HorizontalAlignment="Left" Margin="20,611,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ToggleButton1_OnChecked"/>
         <RadioButton GroupName="sizeGroup" Content="3" HorizontalAlignment="Left" Margin="60,611,0,0" VerticalAlignment="Top" Checked="ToggleButton2_OnChecked"/>
         <RadioButton GroupName="sizeGroup" Content="4" HorizontalAlignment="Left" Margin="100,611,0,0" VerticalAlignment="Top" Checked="ToggleButton3_OnChecked"/>
-
+        <ProgressBar x:Name="ProgressBar" Visibility="Hidden" HorizontalAlignment="Left" Height="10" Margin="10,719,0,0" VerticalAlignment="Top" Width="990" IsIndeterminate="True"/>
     </Grid>
 </Window>
