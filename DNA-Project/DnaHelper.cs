@@ -1,10 +1,12 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿// 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DNA_Project
 {
+
     public class Dna
     {
         public char[] Genom { get; }
@@ -63,21 +65,109 @@ namespace DNA_Project
         {
             var result = 1;
             var size = Sequence.Length;
-            for (var i = Sequence.Length; i <= Genom.Length - size ; i++)
+            for (var i = (Sequence.Length-1); i <= Genom.Length - size; i++)
             {
                 var isTheSame = true;
-                char[] temp = Genom.Skip(i).Take(size).ToArray();
-                for (int j = 0; j < size; j++)
+                var temp = Genom.Skip(i).Take(size).ToArray();
+                for (var j = 0; j < size; j++)
                     if (Sequence[j] != temp[j])
                         isTheSame = false;
 
-                if(isTheSame)
+                if (isTheSame)
                     result++;
             }
 
             return result;
         }
 
+        public int OptimalSearch()
+        {
+            var result = 0;
+            var size = Sequence.Length;
+            if (size == 2)
+            {
+                var firstTab = GetProperTable(Sequence[0]);
+                var secondTab = GetProperTable(Sequence[1]);
+                foreach (var firstElement in firstTab)
+                {
+                    foreach (var secondElement in secondTab)
+                    {
+                        if ((firstElement+1) == secondElement)
+                        {
+                            result++;
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (size == 3)
+            {
+                var firstTab = GetProperTable(Sequence[0]);
+                var secondTab = GetProperTable(Sequence[1]);
+                var thirdTab = GetProperTable(Sequence[2]);
+                foreach (var firstElement in firstTab)
+                {
+                    foreach (var secondElement in secondTab)
+                    {
+                        if ((firstElement + 1) == secondElement)
+                        {
+                            foreach (var thirdElement in thirdTab)
+                            {
+                                if ((secondElement + 1) == thirdElement)
+                                {
+                                    result++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                var firstTab = GetProperTable(Sequence[0]);
+                var secondTab = GetProperTable(Sequence[1]);
+                var thirdTab = GetProperTable(Sequence[2]);
+                var fourthTab = GetProperTable(Sequence[3]);
+                foreach (var firstElement in firstTab)
+                {
+                    foreach (var secondElement in secondTab)
+                    {
+                        if ((firstElement + 1) == secondElement)
+                        {
+                            foreach (var thirdElement in thirdTab)
+                            {
+                                if ((secondElement + 1) == thirdElement)
+                                {
+                                    foreach (var fourthElement in fourthTab)
+                                    {
+                                        if ((thirdElement + 1) == fourthElement)
+                                        {
+                                            result++;
+                                            break; 
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        int[] GetProperTable(char character)
+        {
+            switch (character)
+            {
+                case 'A': return Adenina.ToArray();
+                case 'T': return Tymina.ToArray();
+                case 'C': return Cytozyna.ToArray();
+                case 'G': return Guanina.ToArray();
+                default:  return null;
+            }
+        }
     }
 
 }
