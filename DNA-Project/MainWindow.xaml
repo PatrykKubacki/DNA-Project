@@ -16,7 +16,7 @@
         <Label Content="Podaj wielkość genomu, (domyślnie 100):" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="12"/>
         <TextBox x:Name="GenomSizeLabel"  HorizontalAlignment="Left" Height="23" Margin="242,64,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120"/>
         <Rectangle Fill="#000000" HorizontalAlignment="Left" Height="7" Margin="10,568,0,0" Stroke="Black" VerticalAlignment="Top" Width="978"/>
-        <Label Content="Wybierz wielkość sekwencji (domyślnie 2)" HorizontalAlignment="Left" Margin="10,580,0,0" VerticalAlignment="Top"/>
+        <Label Content="Wybierz wielkość sekwencji" HorizontalAlignment="Left" Margin="10,580,0,0" VerticalAlignment="Top"/>
         <Button Content="Wyszukaj ilość identycznch sekwencji" HorizontalAlignment="Left" Margin="10,635,0,0" VerticalAlignment="Top" Width="270" Height="57" Click="Button_Click_2"/>
         <Button Content="Przeszukiwanie dokładne" HorizontalAlignment="Left" Margin="306,635,0,0" VerticalAlignment="Top" Width="270" RenderTransformOrigin="-0.421,0.429" Height="57" Click="Button_Click_1"/>
         <Label Content="Ostatnie rezultaty" FontSize="26" FontWeight="Bold"  HorizontalAlignment="Left" Margin="648,576,0,0" VerticalAlignment="Top" Height="57"/>
@@ -24,9 +24,14 @@
         <Label x:Name="OptimalSearchResultLabel" Content="" HorizontalAlignment="Left" Margin="648,638,0,0" VerticalAlignment="Top"/>
         <Label Content="Przeszukiwanie optymalne" HorizontalAlignment="Left" Margin="648,617,0,0" VerticalAlignment="Top"/>
         <Label Content="Przeszukiwanie dokładne" HorizontalAlignment="Left" Margin="846,617,0,0" VerticalAlignment="Top"/>
-        <RadioButton GroupName="sizeGroup" Content="2" HorizontalAlignment="Left" Margin="20,611,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ToggleButton1_OnChecked"/>
+        <RadioButton GroupName="sizeGroup" Content="2" HorizontalAlignment="Left" Margin="20,611,0,0" VerticalAlignment="Top" Checked="ToggleButton1_OnChecked"/>
         <RadioButton GroupName="sizeGroup" Content="3" HorizontalAlignment="Left" Margin="60,611,0,0" VerticalAlignment="Top" Checked="ToggleButton2_OnChecked"/>
         <RadioButton GroupName="sizeGroup" Content="4" HorizontalAlignment="Left" Margin="100,611,0,0" VerticalAlignment="Top" Checked="ToggleButton3_OnChecked"/>
         <ProgressBar x:Name="ProgressBar" Visibility="Hidden" HorizontalAlignment="Left" Height="10" Margin="10,719,0,0" VerticalAlignment="Top" Width="990" IsIndeterminate="True"/>
+        <Label Content="Podaj sekwencje" HorizontalAlignment="Left" Margin="266,580,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FirstCharBox" Visibility="Visible" HorizontalAlignment="Left" Height="18" Margin="270,603,0,0" Text="" VerticalAlignment="Top" Width="14"/>
+        <TextBox x:Name="SecondCharBox" Visibility="Visible" HorizontalAlignment="Left" Height="18" Margin="300,603,0,0" Text="" VerticalAlignment="Top" Width="14"/>
+        <TextBox x:Name="ThirdCharBox" Visibility="Hidden" HorizontalAlignment="Left" Height="18" Margin="330,603,0,0" Text="" VerticalAlignment="Top" Width="14"/>
+        <TextBox x:Name="FourthCharBox" Visibility="Hidden" HorizontalAlignment="Left" Height="18" Margin="360,603,0,0" Text="" VerticalAlignment="Top" Width="14"/>
     </Grid>
 </Window>

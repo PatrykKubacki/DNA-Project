@@ -42,6 +42,7 @@ namespace DNA_Project
         async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ProgressBar.Visibility = Visibility.Visible;
+            _dna.SetSequence(GetSequence(_sequenceSize));
             var result = await Search(_dna.PreciseSearch, GenomSizeLabel.Text);
             PreciseSearchResultLabel.Content = result;
             ProgressBar.Visibility = Visibility.Hidden;
@@ -50,9 +51,30 @@ namespace DNA_Project
         async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             ProgressBar.Visibility = Visibility.Visible;
+            _dna.SetSequence(GetSequence(_sequenceSize));
             var result = await Search(_dna.OptimalSearch, GenomSizeLabel.Text);
             OptimalSearchResultLabel.Content = result;
             ProgressBar.Visibility = Visibility.Hidden;
+        }
+
+        char[] GetSequence(int size)
+        {
+            char[] tempSeq = new char[size];
+            for (int i = 0; i < size; i++)
+            {
+                switch (i)
+                {
+                    case 0: tempSeq[0] = Convert.ToChar(FirstCharBox.Text);
+                        break;
+                    case 1: tempSeq[1] = Convert.ToChar(SecondCharBox.Text);
+                        break;
+                    case 2: tempSeq[2] = Convert.ToChar(ThirdCharBox.Text);
+                        break;
+                    case 3: tempSeq[3] = Convert.ToChar(FourthCharBox.Text);
+                        break;
+                }
+            }
+            return tempSeq;
         }
 
         async Task<string> Search(SearchDelegate search, string genomSize)
@@ -60,7 +82,7 @@ namespace DNA_Project
             return await Task.Run(() =>
             {
                 var size = _sequenceSize;
-                _dna.SetSequence(size);
+               
                 _timer.Start();
                 var result = search();
                 double seconds = _timer.Elapsed.TotalSeconds;
@@ -73,16 +95,22 @@ namespace DNA_Project
         void ToggleButton1_OnChecked(object sender, RoutedEventArgs e)
         {
             _sequenceSize = 2;
+            ThirdCharBox.Visibility = Visibility.Hidden;
+            FourthCharBox.Visibility = Visibility.Hidden;
         }
 
         void ToggleButton2_OnChecked(object sender, RoutedEventArgs e)
         {
             _sequenceSize = 3;
+            ThirdCharBox.Visibility = Visibility.Visible;
+            FourthCharBox.Visibility = Visibility.Hidden;
         }
 
         void ToggleButton3_OnChecked(object sender, RoutedEventArgs e)
         {
             _sequenceSize = 4;
+            ThirdCharBox.Visibility = Visibility.Visible;
+            FourthCharBox.Visibility = Visibility.Visible;
         }
     }
 

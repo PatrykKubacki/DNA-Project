@@ -56,16 +56,16 @@ namespace DNA_Project
             }
         }
 
-        public void SetSequence(int size = 2)
+        public void SetSequence(char[] sequence)
         {
-            Sequence = Genom.Take(size).ToArray();
+            Sequence = sequence;
         }
 
         public int PreciseSearch()
         {
-            var result = 1;
+            var result = 0;
             var size = Sequence.Length;
-            for (var i = (Sequence.Length-1); i <= Genom.Length - size; i++)
+            for (var i = 0; i <= Genom.Length - size; i++)
             {
                 var isTheSame = true;
                 var temp = Genom.Skip(i).Take(size).ToArray();
